@@ -258,9 +258,9 @@ export const CriteriaPortal: React.FC = () => {
                   </h3>
                 </div>
 
-                {/* Panel Content */}
+                {/* Panel Content - SINGLE COLUMN LAYOUT TO PREVENT INTERFERENCE */}
                 <div className="p-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="space-y-4">
                     {criteria.items.map((item, index) => (
                       <div
                         key={item.id}
