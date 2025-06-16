@@ -136,14 +136,14 @@ const criteriaData: CriteriaData = {
   'dvv-clarifications': {
     title: 'DVV Clarifications',
     items: [
-      { id: 'dvv-1', title: 'DVV Clarification Response - Criteria 1', documents: ['DVV Response C1'] },
-      { id: 'dvv-2', title: 'DVV Clarification Response - Criteria 2', documents: ['DVV Response C2'] },
-      { id: 'dvv-3', title: 'DVV Clarification Response - Criteria 3', documents: ['DVV Response C3'] },
-      { id: 'dvv-4', title: 'DVV Clarification Response - Criteria 4', documents: ['DVV Response C4'] },
-      { id: 'dvv-5', title: 'DVV Clarification Response - Criteria 5', documents: ['DVV Response C5'] },
-      { id: 'dvv-6', title: 'DVV Clarification Response - Criteria 6', documents: ['DVV Response C6'] },
-      { id: 'dvv-7', title: 'DVV Clarification Response - Criteria 7', documents: ['DVV Response C7'] },
-      { id: 'dvv-8', title: 'Additional Clarifications', documents: ['Additional Documents'] }
+      { id: 'dvv-1', title: 'DVV Clarification Response - Criteria 1', description: 'Detailed response to Data Verification and Validation queries for Criteria 1 covering curricular aspects and related documentation.', documents: ['DVV Response C1', 'Supporting Evidence C1', 'Revised Data C1'] },
+      { id: 'dvv-2', title: 'DVV Clarification Response - Criteria 2', description: 'Comprehensive clarification for Criteria 2 addressing teaching-learning processes, evaluation methods, and student-teacher ratios.', documents: ['DVV Response C2', 'Faculty Data Verification', 'Student Enrollment Proof'] },
+      { id: 'dvv-3', title: 'DVV Clarification Response - Criteria 3', description: 'Research and innovation related clarifications including publication details, research grants, and extension activities.', documents: ['DVV Response C3', 'Publication Evidence', 'Research Grant Documents'] },
+      { id: 'dvv-4', title: 'DVV Clarification Response - Criteria 4', description: 'Infrastructure and learning resources verification including IT facilities, library resources, and physical infrastructure.', documents: ['DVV Response C4', 'Infrastructure Photos', 'Equipment Lists'] },
+      { id: 'dvv-5', title: 'DVV Clarification Response - Criteria 5', description: 'Student support services clarification covering scholarships, placement data, and student progression details.', documents: ['DVV Response C5', 'Placement Records', 'Scholarship Evidence'] },
+      { id: 'dvv-6', title: 'DVV Clarification Response - Criteria 6', description: 'Governance and management clarifications including leadership structure, financial management, and quality assurance.', documents: ['DVV Response C6', 'Governance Documents', 'Audit Reports'] },
+      { id: 'dvv-7', title: 'DVV Clarification Response - Criteria 7', description: 'Institutional values and best practices clarification covering environmental initiatives, gender equity, and institutional distinctiveness.', documents: ['DVV Response C7', 'Best Practice Evidence', 'Environmental Reports'] },
+      { id: 'dvv-8', title: 'Additional Clarifications and Supporting Documents', description: 'Supplementary clarifications and additional evidence provided to address specific DVV queries across all criteria.', documents: ['Additional Clarifications', 'Supplementary Evidence', 'Final Response Summary'] }
     ]
   }
 };
@@ -167,7 +167,7 @@ export const CriteriaPortal: React.FC = () => {
 
   const handleTabClick = (tabId: string) => {
     setActiveTab(tabId);
-    // Reset expanded items when switching tabs
+    // Reset expanded items when switching tabs to ensure clean state
     setExpandedItems(new Set());
   };
 
@@ -267,7 +267,7 @@ export const CriteriaPortal: React.FC = () => {
                         className={`group border border-gray-200 dark:border-dark-600 rounded-lg overflow-hidden hover:shadow-lg transition-all duration-300 animate-scale-in`}
                         style={{ animationDelay: `${index * 50}ms` }}
                       >
-                        {/* Item Header */}
+                        {/* Item Header - Each item has unique expansion state */}
                         <button
                           onClick={() => toggleItemExpansion(item.id)}
                           onKeyDown={(e) => handleKeyDown(e, () => toggleItemExpansion(item.id))}
@@ -283,7 +283,7 @@ export const CriteriaPortal: React.FC = () => {
                           />
                         </button>
 
-                        {/* Item Content */}
+                        {/* Item Content - Only expands if this specific item is in expandedItems */}
                         <div
                           id={`content-${item.id}`}
                           className={`bg-white dark:bg-dark-700 transition-all duration-300 overflow-hidden ${
